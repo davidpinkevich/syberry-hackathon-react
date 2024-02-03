@@ -20,7 +20,7 @@ const MainPage = () => {
   return (
     <div className={styles.main}>
       {loadRandom && <BeatLoader size={20} color="gray" />}
-      {!loadRandom && <AboutfFilm {...randomFilm} />}
+      {!loadRandom && <AboutfFilm film={randomFilm} />}
       <div className={styles.text}>Фильмы для вас:</div>
       {<SwiperFilms topFilms={topFilms ? topFilms : []} />}
     </div>

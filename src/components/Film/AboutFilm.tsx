@@ -1,40 +1,43 @@
-import styles from "./AboutfFilm.module.scss";
+import styles from "./Aboutffilm.module.scss";
 import { Film } from "../../types";
 import ButtonPlay from "../ButtonPlay/ButtonPlay";
 
-
-import { useAppDispatch } from '../../hooks';
-import { addToFavorites, removeFromFavorites } from '../../redux/slices/sliceFavorites';
+import { useAppDispatch } from "../../hooks";
+import {
+  addToFavorites,
+  removeFromFavorites,
+} from "../../redux/slices/sliceFavorites";
 import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
 
-
-const AboutFilm = (props: Film) => {
-
+type Props = {
+  film: Film | undefined;
+};
+const AboutFilm = ({ film }: Props) => {
   const dispatch = useAppDispatch();
 
-  const { genres, countries, duration, year, premiereRu } = props;
+  // const { genres, countries, duration, year, premiereRu } = film;
 
   function addFavorites(props: Film) {
-    dispatch(addToFavorites(props) )
+    dispatch(addToFavorites(props));
   }
-  function removeFavorites(id:number) {
-    dispatch(removeFromFavorites(id) )
+  function removeFavorites(id: number) {
+    dispatch(removeFromFavorites(id));
   }
   return (
     <div className={styles.wrapper}>
       <div className={styles.poster}>
-        <img src={props.posterUrlPreview} />
+        <img src={film?.posterUrlPreview} />
       </div>
       <div className={styles.infoFilm}>
         <div className={styles.title}>
-          <h3>{props.nameRu}</h3>
+          <h3>{film?.nameRu}</h3>
         </div>
         <div className={styles.detailFilm}>
           <ButtonPlay />
           <div className={styles.info}>
             {<span>Страна:</span>}
             <div className={styles.block}>
-              {countries?.map((item, i) => (
+              {film?.countries?.map((item, i) => (
                 <div key={i}>
                   <p>{item.country}</p>
                 </div>
@@ -44,7 +47,7 @@ const AboutFilm = (props: Film) => {
           <div className={styles.info}>
             {<span>Жанр:</span>}
             <div className={styles.block}>
-              {genres?.map((item, i) => (
+              {film?.genres?.map((item, i) => (
                 <div key={i}>
                   <p>{item.genre} </p>
                 </div>
@@ -52,17 +55,27 @@ const AboutFilm = (props: Film) => {
             </div>
           </div>
           <p className={styles.info}>
-            {<span>Продолжительность:</span>} {duration}
+            {<span>Продолжительность:</span>} {film?.duration}
           </p>
           <p className={styles.info}>
-            {<span>Год:</span>} {year} г.
+            {<span>Год:</span>} {film?.year} г.
           </p>
           <p className={styles.info}>
-            {<span>Премьера:</span>} {premiereRu}
+            {<span>Премьера:</span>} {film?.premiereRu}
           </p>
-          <div style={{display: "flex"}}>
-            <AiOutlineLike size={40} onClick={()=> addFavorites(props)} /> 
-            <AiOutlineDislike size={40} onClick={()=> removeFavorites(props.kinopoiskId)}/>
+          <div style={{ display: "flex" }}>
+            <AiOutlineLike
+              size={40}
+              onClick={() => {
+                if (film) addFavorites(film);
+              }}
+            />
+            <AiOutlineDislike
+              size={40}
+              onClick={() => {
+                if (film) removeFavorites(film?.kinopoiskId);
+              }}
+            />
           </div>
         </div>
       </div>

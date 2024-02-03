@@ -34,8 +34,8 @@ const Search = () => {
             films.map((film) => (
               <Link
                 className={styles.link_film}
-                key={film.filmId}
-                to={`/film/${film.filmId}`}
+                key={film.kinopoiskId}
+                to={`/film/${film.kinopoiskId}`}
               >
                 {film.nameRu}
               </Link>

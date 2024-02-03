@@ -17,7 +17,7 @@ const FilmPage = () => {
   return (
     <div className={styles.film_page}>
       {loadRandom && <BeatLoader size={20} color="gray" />}
-      {!loadRandom && <AboutFilm {...film} />}
+      {!loadRandom && <AboutFilm film={film} />}
     </div>
   );
 };
