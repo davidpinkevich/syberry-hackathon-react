@@ -12,8 +12,9 @@ const Search = () => {
 
     const searchFilms = async () => {
         const searchFilms = await baseApi.getFilmKeyword(search)
-        setFilms(searchFilms?.items)
+        setFilms(searchFilms?.films)
     }
+    
 
     useEffect(() => {
         searchFilms()
