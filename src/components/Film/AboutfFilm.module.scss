@@ -1,35 +1,63 @@
 .wrapper {
   display: flex;
-  max-width: 900px;
+  width: 1200px;
   margin: 0 auto;
-  gap: 1rem;
+  height: 450px;
+  gap: 10px;
+  font-size: 22px;
 }
 .poster {
-  width: 400px;
-  height: 500px;
-  background-color: rgb(245,245,245);
+  position: relative;
+  z-index: 2;
+  width: 45%;
+  border-radius: 14px;
+  height: 450px;
+  padding: 7px 0;
+  box-shadow: inset 0px 0px 6px 6px rgb(0, 0, 0);
+  & img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+    padding: 7px 0;
+    box-shadow: inset 0px 0px 6px 6px rgb(0, 0, 0);
+  }
 }
 .infoFilm {
-  background-color: rgb(245,245,245);
-  padding: 2rem 2rem;
+  position: relative;
+  background-color: rgba(245, 245, 245, 0.7);
+  border-radius: 14px;
+  box-shadow: inset 0px 0px 6px 6px rgb(0, 0, 0);
+  padding: 40px;
   width: 100%;
 }
 
 .title {
   display: flex;
   justify-content: space-between;
-  .buttonTitle {
-    padding: 10px 20px;
-    height: 40px;
-  }
+  font-size: 40px;
+  font-weight: 700;
 }
 
 .detailFilm {
   display: flex;
-  .block2 {
-    margin-left: 5rem;
-  }
+  flex-direction: column;
+  gap: 15px;
+  width: 450px;
   .info {
     display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    & span {
+      font-size: 20px;
+      font-weight: 600;
+    }
   }
+}
+.block {
+  display: flex;
+  gap: 5px;
 }
