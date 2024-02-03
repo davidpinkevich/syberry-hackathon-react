@@ -16,20 +16,26 @@ interface ISwiperFilmsProps {
 
 export const SwiperFilms: FC<ISwiperFilmsProps> = ({ topFilms = [] }) => {
   return (
-    <Swiper
-      navigation={true}
-      mousewheel={true} 
-      modules={[Navigation, Mousewheel]}
-      slidesPerView={4}
-      spaceBetween={30}
-      className={`${styles.swiper} mySwiper`}
-    >
-      {topFilms.length !== 0 &&
-        topFilms.map((film, index) => (
-          <SwiperSlide key={`${film.nameRu}${index}`}>
-            <CardFilm image={film.posterUrl} alt={film.nameRu} descr={film.nameRu} id={film.kinopoiskId}/>
-          </SwiperSlide>
-        ))}
-    </Swiper>
+    <div className={styles.root}>
+      <Swiper
+        navigation={true}
+        mousewheel={true}
+        modules={[Navigation, Mousewheel]}
+        slidesPerView={4}
+        className={`${styles.swiper} mySwiper`}
+      >
+        {topFilms.length !== 0 &&
+          topFilms.map((film, index) => (
+            <SwiperSlide key={`${film.nameRu}${index}`}>
+              <CardFilm
+                image={film.posterUrl}
+                alt={film.nameRu}
+                descr={film.nameRu}
+                id={film.kinopoiskId}
+              />
+            </SwiperSlide>
+          ))}
+      </Swiper>
+    </div>
   );
 };

@@ -9,8 +9,9 @@ import { AiOutlineLike } from "react-icons/ai";
 
 
 const AboutfFilm = (props: Film) => {
-  console.log("props: ", props);
+
   const dispatch = useAppDispatch();
+
   const { genres, countries, duration, year, premiereRu } = props;
 
   function addFavorites(props: Film) {

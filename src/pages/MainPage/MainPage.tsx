@@ -11,14 +11,12 @@ const MainPage = () => {
   const { randomFilm, topFilms, loadRandom } = useAppSelector(
     (state) => state.sliceMain
   );
-  console.log("randomFilm: ", randomFilm);
-  console.log("topFilms: ", topFilms);
+
   useEffect(() => {
-    (async function () {
-      dispatch(fetchRandom());
-      dispatch(fetchTopFilms());
-    })();
+    dispatch(fetchRandom());
+    dispatch(fetchTopFilms());
   }, []);
+
   return (
     <div className={styles.main}>
       {loadRandom && <BeatLoader size={20} color="gray" />}
