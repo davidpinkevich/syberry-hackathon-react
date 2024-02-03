@@ -1,14 +1,25 @@
-import React from 'react'
-import AboutfFilm from '../../components/Film/AboutfFilm'
-const FilmPage = () => {
-  
-  return (
-    <>
-      <div>FilmPage</div>
-      <AboutfFilm />
-    </>
-  
-  )
-}
+import { useEffect } from "react";
+import { useParams } from "react-router";
+import { BeatLoader } from "react-spinners";
+import AboutfFilm from "../../components/Film/AboutfFilm";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { fetchFilm } from "../../redux/slices/sliceMain";
+import styles from "./FilmPage.module.scss";
 
-export default FilmPage
+const FilmPage = () => {
+  const { id } = useParams();
+  const dispatch = useAppDispatch();
+  const { film, loadRandom } = useAppSelector((state) => state.sliceMain);
+  console.log("test", id, film);
+  useEffect(() => {
+    dispatch(fetchFilm((id && typeof +id) === "number" ? Number(id) : 1));
+  }, []);
+  return (
+    <div className={styles.film_page}>
+      {loadRandom && <BeatLoader size={20} color="gray" />}
+      {!loadRandom && <AboutfFilm {...film} />}
+    </div>
+  );
+};
+
+export default FilmPage;
