@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useRef } from "react";
 
 import {
   useForm,
@@ -8,6 +8,9 @@ import {
 } from "react-hook-form";
 
 import styles from "./signIn.module.scss";
+
+import bcrypt from 'bcryptjs';
+import useClickOutside from "../../../hooks/useClickOutside";
 
 type Inputs = {
   username: string;
@@ -19,6 +22,11 @@ interface IInputProps {
   register: UseFormRegister<Inputs>;
   type: "username" | "password";
   title: string;
+}
+
+type Props = {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Input: FC<IInputProps> = ({ errors, register, type, title }) => (
@@ -44,7 +52,7 @@ const Input: FC<IInputProps> = ({ errors, register, type, title }) => (
   </div>
 );
 
-export const SignIn: FC = () => {
+export const SignIn: FC<Props> = ({ isOpen, setIsOpen }: Props) => {
   const {
     register,
     handleSubmit,
@@ -52,25 +60,38 @@ export const SignIn: FC = () => {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
-    localStorage.setItem('user', `${JSON.stringify(data)}`);
+    const hashUser = bcrypt.hashSync(data.password.toString(), 10)
+    localStorage.setItem('user', `${JSON.stringify(hashUser)}`);
+    setIsOpen(false)
   };
 
+  const ref = useRef(null)
+  useClickOutside(ref, () => setIsOpen(false))
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-      <Input
-        register={register}
-        errors={errors}
-        title="Username"
-        type="username"
-      />
-      <Input
-        register={register}
-        errors={errors}
-        title="Password"
-        type="password"
-      />
-      <input type="submit" className={styles.button} />
-    </form>
+    <>
+      {
+        isOpen && (
+
+          <div className={styles.modal} ref={ref}>
+            <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+              <Input
+                register={register}
+                errors={errors}
+                title="Username"
+                type="username"
+              />
+              <Input
+                register={register}
+                errors={errors}
+                title="Password"
+                type="password"
+              />
+              <input type="submit" className={styles.button} />
+            </form>
+          </div>
+        )
+      }
+    </>
   );
 };

@@ -1,5 +1,5 @@
 export type Film = {
-  filmId: number;
+  kinopoiskId: number;
   nameRu: string;
   nameEn: string;
   premiereRu: string;

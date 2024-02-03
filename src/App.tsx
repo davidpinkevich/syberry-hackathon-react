@@ -3,6 +3,7 @@ import Layout from "./pages/Layout/Layout";
 import PrivateRoute from "./hoc/PrivateRoute";
 import FilmPage from "./pages/FilmPage/FilmPage";
 import MainPage from "./pages/MainPage/MainPage";
+import FavoritesPage from "./pages/FavoritesPage/FavoritesPage";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
             path="profile"
             element={<PrivateRoute>Private</PrivateRoute>}
           />
-          <Route path="favorites" element={<div>Favorites</div>} />
+          <Route path="favorites" element={<FavoritesPage />} />
           <Route path="film/:id" element={<FilmPage />} />
         </Route>
       </Routes>

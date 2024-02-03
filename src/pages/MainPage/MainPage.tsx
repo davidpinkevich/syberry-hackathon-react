@@ -5,6 +5,7 @@ import AboutfFilm from "../../components/Film/AboutfFilm";
 import { useEffect } from "react";
 import styles from "./MainPage.module.scss";
 
+
 const MainPage = () => {
   const dispatch = useAppDispatch();
   const { randomFilm, topFilms, loadRandom } = useAppSelector(
