@@ -12,7 +12,7 @@ axios.defaults.baseURL = "https://kinopoiskapiunofficial.tech";
 class FimlsApi {
   async getFilmKeyword(keyword: string) {
     try {
-      const res = await axios.get(`/api/v2.1/films/search-by-keyword?keyword=${keyword}`, axiosConfig);
+      const res = await axios.get(`/api/v2.2/films/${keyword}`, axiosConfig);
       return res.data;
     } catch (error) {
       console.error("Error fetching keyword film:", error);
