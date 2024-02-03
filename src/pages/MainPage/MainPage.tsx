@@ -2,6 +2,7 @@ import { fetchRandom, fetchTopFilms } from "../../redux/slices/sliceMain";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { useEffect } from "react";
 
+
 const MainPage = () => {
   const dispatch = useAppDispatch();
   const { randomFilm, topFilms } = useAppSelector((state) => state.sliceMain);
@@ -13,7 +14,9 @@ const MainPage = () => {
       dispatch(fetchTopFilms());
     })();
   }, []);
-  return <div>MainPage</div>;
+  return <div>
+   
+  </div>;
 };
 
 export default MainPage;
