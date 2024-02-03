@@ -4,11 +4,11 @@ import ButtonPlay from "../ButtonPlay/ButtonPlay";
 
 
 import { useAppDispatch } from '../../hooks';
-import { addToFavorites } from '../../redux/slices/sliceFavorites';
-import { AiOutlineLike } from "react-icons/ai";
+import { addToFavorites, removeFromFavorites } from '../../redux/slices/sliceFavorites';
+import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
 
 
-const AboutfFilm = (props: Film) => {
+const AboutFilm = (props: Film) => {
 
   const dispatch = useAppDispatch();
 
@@ -16,6 +16,9 @@ const AboutfFilm = (props: Film) => {
 
   function addFavorites(props: Film) {
     dispatch(addToFavorites(props) )
+  }
+  function removeFavorites(id:number) {
+    dispatch(removeFromFavorites(id) )
   }
   return (
     <div className={styles.wrapper}>
@@ -57,11 +60,14 @@ const AboutfFilm = (props: Film) => {
           <p className={styles.info}>
             {<span>Премьера:</span>} {premiereRu}
           </p>
-          <AiOutlineLike size={40} onClick={()=> addFavorites(props)} /> 
+          <div style={{display: "flex"}}>
+            <AiOutlineLike size={40} onClick={()=> addFavorites(props)} /> 
+            <AiOutlineDislike size={40} onClick={()=> removeFavorites(props.kinopoiskId)}/>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default AboutfFilm;
+export default AboutFilm;

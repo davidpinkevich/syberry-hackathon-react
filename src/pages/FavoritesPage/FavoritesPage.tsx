@@ -1,4 +1,4 @@
-import AboutfFilm from "../../components/Film/AboutfFilm"
+import AboutFilm from "../../components/Film/AboutFilm"
 import { useAppSelector } from "../../hooks"
 
 
@@ -10,7 +10,7 @@ const FavoritesPage = () => {
                 !favorites.length
                     ? <h1>Нет фильмов в избранном</h1>
                     : favorites.map(film => (
-                        <AboutfFilm key={film.filmId} {...film} />
+                        <AboutFilm key={film.kinopoiskId} {...film} />
                     ))
             }
         </div>
