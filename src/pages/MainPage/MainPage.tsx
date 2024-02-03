@@ -1,5 +1,5 @@
-import { fetchRandom, fetchTopFilms } from "../../../redux/slices/sliceMain";
-import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { fetchRandom, fetchTopFilms } from "../../redux/slices/sliceMain";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import { useEffect } from "react";
 
 const MainPage = () => {
