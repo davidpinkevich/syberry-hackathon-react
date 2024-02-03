@@ -12,7 +12,7 @@ const Search = () => {
 
     const searchFilms = async () => {
         const searchFilms = await baseApi.getFilmKeyword(search)
-        setFilms(searchFilms?.films)
+        setFilms(searchFilms?.items)
     }
 
     useEffect(() => {
@@ -26,7 +26,7 @@ const Search = () => {
                     {
 
                         films && films.length > 0 && films.map(film => (
-                            <Link key={film.filmId} to={`/film/${film.filmId}`}>{film.nameRu}</Link>
+                            <Link key={film.kinopoiskId} to={`/film/${film.kinopoiskId}`}>{film.nameRu}</Link>
                         ))
                     }
                 </ul>)
