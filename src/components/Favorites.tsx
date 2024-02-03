@@ -1,11 +1,13 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import { useAppSelector } from "../hooks";
 
 const Favorites = () => {
-    return (
-        <div>
-            <Link to={'/favorites'}>Избранное (12)</Link>
-        </div>
-    )
-}
+  const { favorites } = useAppSelector((state) => state.sliceFavorites);
+  return (
+    <div>
+      <Link to={"/favorites"}>Избранное ({favorites.length})</Link>
+    </div>
+  );
+};
 
-export default Favorites
+export default Favorites;
