@@ -8,7 +8,7 @@ import styles from "./MainPage.module.scss";
 
 const MainPage = () => {
   const dispatch = useAppDispatch();
-  const { randomFilm, loadRandom } = useAppSelector(
+  const { randomFilm, topFilms, loadRandom } = useAppSelector(
     (state) => state.sliceMain
   );
 
