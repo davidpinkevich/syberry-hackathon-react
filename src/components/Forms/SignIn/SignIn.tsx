@@ -51,7 +51,10 @@ export const SignIn: FC = () => {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    console.log(data);
+    localStorage.setItem('user', `${JSON.stringify(data)}`);
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
