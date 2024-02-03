@@ -1,12 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { User } from "../../types";
 
 type TypeInitial = {
-    user: User | null;
+    user: boolean;
 };
 
 const initialState: TypeInitial = {
-    user: JSON.parse(localStorage.getItem('user')!) || null
+    user: !!localStorage.getItem('user')
 };
 
 const userSlice = createSlice({
@@ -18,7 +17,7 @@ const userSlice = createSlice({
             localStorage.setItem('user', action.payload.user)
         },
         removeUser(state) {
-            state.user = null
+            state.user = !!null
             localStorage.removeItem('user')
         }
     },
