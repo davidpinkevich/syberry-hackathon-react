@@ -26,7 +26,8 @@ class FilmsApi {
 
   async getTopFilms(): Promise<FilmSearchResponse | undefined> {
     try {
-      const res = await axios.get(`/api/v2.1/films/collections`, axiosConfig);
+      const res = await axios.get(`/api/v2.2/films/collections`, axiosConfig);
+      console.log("res: ", res.data);
       return res.data;
     } catch (error) {
       console.error("Error fetching films:", error);
@@ -54,10 +55,10 @@ class FilmsApi {
     }
   }
 
-  async getRandomFilm(): Promise<Film | undefined> {
+  async getRandomFilm(): Promise<{ items: Film[] } | undefined> {
     try {
       const res = await axios.get(
-        `/api/v2.1/films/premieres?year=${year}&month=${month}`,
+        `/api/v2.2/films/premieres?year=${year}&month=${month}`,
         axiosConfig
       );
       return res.data;

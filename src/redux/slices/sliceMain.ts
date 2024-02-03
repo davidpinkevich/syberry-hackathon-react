@@ -1,21 +1,26 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { Film, FilmSearchResponse } from "../../types";
 import service from "../../services/baseApi";
 
-// interface TypesInitialState {
-//   search: string;
-//   typeSearch: string;
-//   tooltip: boolean;
-//   loading: boolean;
-//   photos: Array<TypePhoto>;
-// }
-
-const initialState = {
-  randomFilm: {},
+type TypeInitial = {
+  randomFilm: Film | undefined;
+  topFilms: Film[] | undefined;
+  loadRandom: boolean;
 };
 
-export const fetchPhotos = createAsyncThunk("main/getRandom", async () => {
+const initialState: TypeInitial = {
+  randomFilm: undefined,
+  topFilms: undefined,
+  loadRandom: true,
+};
+
+export const fetchRandom = createAsyncThunk("main/getRandom", async () => {
   return await service.getRandomFilm();
+});
+
+export const fetchTopFilms = createAsyncThunk("main/getTops", async () => {
+  return await service.getTopFilms();
 });
 
 const searchSlice = createSlice({
@@ -24,18 +29,26 @@ const searchSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchPhotos.pending, (state) => {
-        // state.loading = true;
+      .addCase(fetchRandom.pending, (state) => {
+        state.loadRandom = true;
       })
-      .addCase(fetchPhotos.fulfilled, (state, action) => {
-        // state.loading = false;
-        state.randomFilm = action.payload;
-      })
-      .addCase(fetchPhotos.rejected, (state) => {
-        // state.loading = false;
-      });
+      .addCase(
+        fetchRandom.fulfilled,
+        (state, action: PayloadAction<{ items: Film[] } | undefined>) => {
+          state.loadRandom = false;
+          if (action?.payload?.items)
+            state.randomFilm =
+              action.payload.items[Math.floor(Math.random() * 50)];
+        }
+      )
+      .addCase(
+        fetchTopFilms.fulfilled,
+        (state, action: PayloadAction<FilmSearchResponse | undefined>) => {
+          if (action?.payload?.items)
+            state.topFilms = [...action.payload?.items];
+        }
+      );
   },
 });
 
-// export const { hiddenTooltip, changeType } = searchSlice.actions;
 export default searchSlice.reducer;
