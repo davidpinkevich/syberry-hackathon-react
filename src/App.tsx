@@ -14,7 +14,7 @@ function App() {
           />
         </Route>
         <Route path="favorites" element={<div>Favorites</div>} />
-        <Route path=":id" element={<div>Film</div>} />
+        <Route path="film/:id" element={<div>Film</div>} />
       </Routes>
     </div>
   );
