@@ -1,0 +1,10 @@
+.search {
+    position: relative;
+}
+
+.list {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
