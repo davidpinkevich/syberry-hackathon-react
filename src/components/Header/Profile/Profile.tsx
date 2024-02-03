@@ -3,13 +3,16 @@ import Favorites from "../../Favorites"
 
 import styles from './styles.module.scss'
 import { SignIn } from "../../Forms/SignIn/SignIn"
+import { removeUser } from "../../../redux/slices/userSlice"
+import { useAppDispatch, useAppSelector } from '../../../hooks/index'
 
 const Profile = () => {
-    const [user, setUser] = useState(!!localStorage.getItem('user'))
+    const dispatch = useAppDispatch();
+    const { user } = useAppSelector((state) => state.userSlice)
+
     const [isOpen, setIsOpen] = useState(false)
     const logout = () => {
-        setUser(false)
-        localStorage.removeItem('user')
+        dispatch(removeUser())
     }
 
     return (
