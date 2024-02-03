@@ -2,6 +2,8 @@ export type Film = {
   kinopoiskId: number;
   nameRu: string;
   nameEn: string;
+  premiereRu: string;
+  duration: number;
   type: string;
   year: string;
   description: string;
