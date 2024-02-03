@@ -22,7 +22,7 @@ const Profile = () => {
         <button onClick={() => setIsOpen(true)}>Войти</button>
       ) : (
         <div>
-          <div>
+          <div className={styles.block}>
             <Link to={"/profile"}>Личный кабинет</Link>
             <button onClick={logout}>Выйти</button>
           </div>
