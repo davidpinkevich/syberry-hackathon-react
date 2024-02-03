@@ -1,10 +1,9 @@
-const UserPage = () => {
-    return (
-        <div>
-            users
+// import styles from './UserPage.module.scss'
 
-        </div>
-    )
+const UserPage = () => {
+  return (
+    <div>UserPage</div>
+  )
 }
 
 export default UserPage
