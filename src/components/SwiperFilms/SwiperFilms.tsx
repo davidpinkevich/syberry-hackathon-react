@@ -1,31 +1,35 @@
 import { FC } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Mousewheel, Navigation } from "swiper/modules";
+import { CardFilm } from "../Cards/CardFilm/CardFilm";
+
+import { Film } from "../../types";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import styles from './swiper.module.scss'
+import "./swiper.css";
+import styles from "./swiper.module.scss";
 
-export const SwiperFilms: FC = () => {
+interface ISwiperFilmsProps {
+  topFilms: Film[] | undefined;
+}
+
+export const SwiperFilms: FC<ISwiperFilmsProps> = ({ topFilms = [] }) => {
   return (
-    <>
-      <Swiper
-        navigation={true}
-        modules={[Navigation]}
-        slidesPerView={4}
-        spaceBetween={30}
-        className={`${styles.swiper} mySwiper`}
-      >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
-      </Swiper>
-    </>
+    <Swiper
+      navigation={true}
+      mousewheel={true} 
+      modules={[Navigation, Mousewheel]}
+      slidesPerView={4}
+      spaceBetween={30}
+      className={`${styles.swiper} mySwiper`}
+    >
+      {topFilms.length !== 0 &&
+        topFilms.map((film, index) => (
+          <SwiperSlide key={`${film.nameRu}${index}`}>
+            <CardFilm image={film.posterUrl} alt={film.nameRu} descr={film.nameRu} id={film.kinopoiskId}/>
+          </SwiperSlide>
+        ))}
+    </Swiper>
   );
 };
