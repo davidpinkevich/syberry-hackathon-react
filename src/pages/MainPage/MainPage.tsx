@@ -2,7 +2,7 @@ import { BeatLoader } from "react-spinners";
 import { useEffect } from "react";
 import { fetchRandom, fetchTopFilms } from "../../redux/slices/sliceMain";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import AboutfFilm from "../../components/Film/AboutfFilm";
+import AboutfFilm from "../../components/Film/AboutFilm";
 import { SwiperFilms } from "../../components/SwiperFilms/SwiperFilms";
 import styles from "./MainPage.module.scss";
 

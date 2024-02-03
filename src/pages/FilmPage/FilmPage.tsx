@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router";
 import { BeatLoader } from "react-spinners";
-import AboutfFilm from "../../components/Film/AboutfFilm";
+import AboutFilm from "../../components/Film/AboutFilm";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { fetchFilm } from "../../redux/slices/sliceMain";
 import styles from "./FilmPage.module.scss";
@@ -17,7 +17,7 @@ const FilmPage = () => {
   return (
     <div className={styles.film_page}>
       {loadRandom && <BeatLoader size={20} color="gray" />}
-      {!loadRandom && <AboutfFilm {...film} />}
+      {!loadRandom && <AboutFilm {...film} />}
     </div>
   );
 };
