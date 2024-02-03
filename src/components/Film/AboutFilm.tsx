@@ -2,7 +2,7 @@ import styles from "./Aboutffilm.module.scss";
 import { Film } from "../../types";
 import ButtonPlay from "../ButtonPlay/ButtonPlay";
 
-import { useAppDispatch } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import {
   addToFavorites,
   removeFromFavorites,
@@ -14,6 +14,7 @@ type Props = {
 };
 const AboutFilm = ({ film }: Props) => {
   const dispatch = useAppDispatch();
+  const { favorites } = useAppSelector((state) => state.sliceFavorites);
 
   // const { genres, countries, duration, year, premiereRu } = film;
 
@@ -64,7 +65,7 @@ const AboutFilm = ({ film }: Props) => {
             {<span>Премьера:</span>} {film?.premiereRu}
           </p>
           <div style={{ display: "flex" }}>
-            <AiOutlineLike
+            {/* <AiOutlineLike
               size={40}
               onClick={() => {
                 if (film) addFavorites(film);
@@ -74,6 +75,26 @@ const AboutFilm = ({ film }: Props) => {
               size={40}
               onClick={() => {
                 if (film) removeFavorites(film?.kinopoiskId);
+              }}
+            /> */}
+            <AiOutlineLike
+              style={{
+                cursor: "pointer",
+              }}
+              className={` ${
+                favorites.find((item) => item.kinopoiskId === film?.kinopoiskId)
+                  ? styles.active
+                  : ""
+              } `}
+              size={40}
+              onClick={() => {
+                if (film) addFavorites(film);
+              }}
+            />
+            <AiOutlineDislike
+              size={40}
+              onClick={() => {
+                if (film) removeFavorites(film.kinopoiskId);
               }}
             />
           </div>
