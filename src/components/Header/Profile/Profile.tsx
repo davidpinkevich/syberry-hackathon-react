@@ -5,6 +5,7 @@ import styles from './styles.module.scss'
 import { SignIn } from "../../Forms/SignIn/SignIn"
 import { removeUser } from "../../../redux/slices/userSlice"
 import { useAppDispatch, useAppSelector } from '../../../hooks/index'
+import { Link } from "react-router-dom"
 
 const Profile = () => {
     const dispatch = useAppDispatch();
@@ -20,12 +21,16 @@ const Profile = () => {
             {
                 !user
                     ? <button onClick={() => setIsOpen(true)}>Войти</button>
-                    : <button onClick={logout}>Выйти</button>
+                    : <div>
+                        <Link to={'/profile'}>Личный кабинет</Link>
+                        <button onClick={logout}>Выйти</button>
+                    </div>
             }
             {
                 user && <Favorites />
             }
             {isOpen && <SignIn isOpen={isOpen} setIsOpen={setIsOpen} />}
+
         </div>
     )
 }
