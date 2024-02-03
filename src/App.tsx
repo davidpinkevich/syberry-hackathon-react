@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router";
 import Layout from "./pages/Layout/Layout";
 import PrivateRoute from "./hoc/PrivateRoute";
+import FilmPage from "./pages/FilmPage/FilmPage";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
           />
         </Route>
         <Route path="favorites" element={<div>Favorites</div>} />
-        <Route path="film/:id" element={<div>Film</div>} />
+        <Route path="film/:id" element={<FilmPage />} />
       </Routes>
     </div>
   );
