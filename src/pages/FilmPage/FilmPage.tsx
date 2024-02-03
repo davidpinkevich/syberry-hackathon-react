@@ -12,7 +12,7 @@ const FilmPage = () => {
   const { film, loadRandom } = useAppSelector((state) => state.sliceMain);
   useEffect(() => {
     dispatch(fetchFilm((id && typeof +id) === "number" ? Number(id) : 1));
-  }, []);
+  }, [id]);
   return (
     <div className={styles.film_page}>
       {loadRandom && <BeatLoader size={20} color="gray" />}
