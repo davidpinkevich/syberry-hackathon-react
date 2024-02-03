@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router";
 import Layout from "./pages/Layout/Layout";
 import PrivateRoute from "./hoc/PrivateRoute";
 import FilmPage from "./pages/FilmPage/FilmPage";
-import MainPage from "./pages/Layout/MainPage/MainPage";
+import MainPage from "./pages/MainPage/MainPage";
 
 function App() {
   return (
