@@ -24,7 +24,6 @@ const Profile = () => {
         <button onClick={() => setIsOpen(true)}>Войти</button>
       ) : (
         <div>
-          <img src={userIcon} width={50} alt="" />
           <div>
             <Link to={"/profile"}>Личный кабинет</Link>
             <button onClick={logout}>Выйти</button>
@@ -36,3 +35,5 @@ const Profile = () => {
     </div>
   );
 };
+
+export default Profile;
