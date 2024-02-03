@@ -42,3 +42,9 @@ export type Genre = {
 export type Country = {
   country: string;
 };
+
+
+export type User = {
+  login: string;
+  password: string;
+}

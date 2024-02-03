@@ -11,6 +11,8 @@ import styles from "./signIn.module.scss";
 
 import bcrypt from 'bcryptjs';
 import useClickOutside from "../../../hooks/useClickOutside";
+import { useAppDispatch } from "../../../hooks";
+import { addUser } from "../../../redux/slices/userSlice";
 
 type Inputs = {
   username: string;
@@ -58,10 +60,14 @@ export const SignIn: FC<Props> = ({ isOpen, setIsOpen }: Props) => {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
+  const dispatch = useAppDispatch()
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const hashUser = bcrypt.hashSync(data.password.toString(), 10)
-    localStorage.setItem('user', `${JSON.stringify(hashUser)}`);
+
+    dispatch(addUser({
+      user: hashUser
+    }))
     setIsOpen(false)
   };
 

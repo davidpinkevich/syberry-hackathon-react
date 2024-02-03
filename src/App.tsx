@@ -7,19 +7,14 @@ import FavoritesPage from "./pages/FavoritesPage/FavoritesPage";
 
 function App() {
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<MainPage />} />
-          <Route
-            path="profile"
-            element={<PrivateRoute>Private</PrivateRoute>}
-          />
-          <Route path="favorites" element={<FavoritesPage />} />
-          <Route path="film/:id" element={<FilmPage />} />
-        </Route>
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<MainPage />} />
+        <Route path="profile" element={<PrivateRoute>Private</PrivateRoute>} />
+        <Route path="favorites" element={<FavoritesPage />} />
+        <Route path="film/:id" element={<FilmPage />} />
+      </Route>
+    </Routes>
   );
 }
 
