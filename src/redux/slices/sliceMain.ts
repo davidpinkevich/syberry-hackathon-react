@@ -5,6 +5,7 @@ import service from "../../services/baseApi";
 
 type TypeInitial = {
   randomFilm: Film | undefined;
+  film: Film | undefined;
   topFilms: Film[] | undefined;
   loadRandom: boolean;
 };
@@ -13,6 +14,7 @@ const initialState: TypeInitial = {
   randomFilm: undefined,
   topFilms: undefined,
   loadRandom: true,
+  film: undefined,
 };
 
 export const fetchRandom = createAsyncThunk("main/getRandom", async () => {
@@ -22,6 +24,13 @@ export const fetchRandom = createAsyncThunk("main/getRandom", async () => {
 export const fetchTopFilms = createAsyncThunk("main/getTops", async () => {
   return await service.getTopFilms();
 });
+
+export const fetchFilm = createAsyncThunk(
+  "main/getFilm",
+  async (id: number) => {
+    return await service.getFilm(id);
+  }
+);
 
 const searchSlice = createSlice({
   name: "main",
@@ -47,7 +56,14 @@ const searchSlice = createSlice({
           if (action?.payload?.items)
             state.topFilms = [...action.payload?.items];
         }
-      );
+      )
+      .addCase(fetchFilm.pending, (state) => {
+        state.loadRandom = true;
+      })
+      .addCase(fetchFilm.fulfilled, (state, action) => {
+        state.loadRandom = false;
+        if (action?.payload?.data) state.film = action.payload.data;
+      });
   },
 });
 
