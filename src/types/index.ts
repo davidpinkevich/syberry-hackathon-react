@@ -32,7 +32,8 @@ export type FilmSearchResponse = {
   keyword: string;
   pagesCount: number;
   searchFilmsCountResult: number;
-  films: Film[];
+  items?: Film[];
+  films?: Film[];
 };
 
 export type Genre = {
@@ -43,8 +44,7 @@ export type Country = {
   country: string;
 };
 
-
 export type User = {
   login: string;
   password: string;
-}
+};

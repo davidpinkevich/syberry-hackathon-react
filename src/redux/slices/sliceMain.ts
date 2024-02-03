@@ -53,6 +53,7 @@ const searchSlice = createSlice({
       .addCase(
         fetchTopFilms.fulfilled,
         (state, action: PayloadAction<FilmSearchResponse | undefined>) => {
+          console.log(action.payload);
           if (action?.payload?.items)
             state.topFilms = [...action.payload?.items];
         }
@@ -60,10 +61,13 @@ const searchSlice = createSlice({
       .addCase(fetchFilm.pending, (state) => {
         state.loadRandom = true;
       })
-      .addCase(fetchFilm.fulfilled, (state, action) => {
-        state.loadRandom = false;
-        if (action?.payload?.data) state.film = action.payload.data;
-      });
+      .addCase(
+        fetchFilm.fulfilled,
+        (state, action: PayloadAction<{ data: Film } | undefined>) => {
+          state.loadRandom = false;
+          if (action?.payload?.data) state.film = action.payload.data;
+        }
+      );
   },
 });
 
