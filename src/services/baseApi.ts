@@ -27,7 +27,6 @@ class FilmsApi {
   async getTopFilms(): Promise<FilmSearchResponse | undefined> {
     try {
       const res = await axios.get(`/api/v2.2/films/collections`, axiosConfig);
-      console.log("res: ", res.data);
       return res.data;
     } catch (error) {
       console.error("Error fetching films:", error);

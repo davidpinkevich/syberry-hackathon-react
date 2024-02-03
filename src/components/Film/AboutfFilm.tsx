@@ -3,7 +3,6 @@ import { Film } from "../../types";
 import ButtonPlay from "../ButtonPlay/ButtonPlay";
 
 const AboutfFilm = (props: Film) => {
-  console.log("props: ", props);
   const { genres, countries, duration, year, premiereRu } = props;
 
   return (

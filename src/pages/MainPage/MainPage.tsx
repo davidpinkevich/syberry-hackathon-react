@@ -8,11 +8,10 @@ import styles from "./MainPage.module.scss";
 
 const MainPage = () => {
   const dispatch = useAppDispatch();
-  const { randomFilm, topFilms, loadRandom } = useAppSelector(
+  const { randomFilm, loadRandom } = useAppSelector(
     (state) => state.sliceMain
   );
-  console.log("randomFilm: ", randomFilm);
-  console.log("topFilms: ", topFilms);
+
   useEffect(() => {
     (async function () {
       dispatch(fetchRandom());
