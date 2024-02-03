@@ -53,7 +53,6 @@ const searchSlice = createSlice({
       .addCase(
         fetchTopFilms.fulfilled,
         (state, action: PayloadAction<FilmSearchResponse | undefined>) => {
-          console.log(action.payload);
           if (action?.payload?.items)
             state.topFilms = [...action.payload?.items];
         }

@@ -10,7 +10,6 @@ const FilmPage = () => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const { film, loadRandom } = useAppSelector((state) => state.sliceMain);
-  console.log("test", id, film);
   useEffect(() => {
     dispatch(fetchFilm((id && typeof +id) === "number" ? Number(id) : 1));
   }, []);
