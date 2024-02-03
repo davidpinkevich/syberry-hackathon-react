@@ -1,10 +1,15 @@
+import { BeatLoader } from "react-spinners";
 import { fetchRandom, fetchTopFilms } from "../../redux/slices/sliceMain";
 import { useAppDispatch, useAppSelector } from "../../hooks";
+import AboutfFilm from "../../components/Film/AboutfFilm";
 import { useEffect } from "react";
+import styles from "./MainPage.module.scss";
 
 const MainPage = () => {
   const dispatch = useAppDispatch();
-  const { randomFilm, topFilms } = useAppSelector((state) => state.sliceMain);
+  const { randomFilm, topFilms, loadRandom } = useAppSelector(
+    (state) => state.sliceMain
+  );
   console.log("randomFilm: ", randomFilm);
   console.log("topFilms: ", topFilms);
   useEffect(() => {
@@ -13,7 +18,12 @@ const MainPage = () => {
       dispatch(fetchTopFilms());
     })();
   }, []);
-  return <div>MainPage</div>;
+  return (
+    <div className={styles.main}>
+      {loadRandom && <BeatLoader size={20} color="gray" />}
+      {!loadRandom && <AboutfFilm {...randomFilm} />}
+    </div>
+  );
 };
 
 export default MainPage;
