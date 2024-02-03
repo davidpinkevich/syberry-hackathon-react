@@ -13,11 +13,10 @@ const MainPage = () => {
   );
 
   useEffect(() => {
-    (async function () {
-      dispatch(fetchRandom());
-      dispatch(fetchTopFilms());
-    })();
+    dispatch(fetchRandom());
+    dispatch(fetchTopFilms());
   }, []);
+
   return (
     <div className={styles.main}>
       {loadRandom && <BeatLoader size={20} color="gray" />}
