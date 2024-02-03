@@ -17,7 +17,7 @@ class FilmsApi {
     keyword: string
   ): Promise<FilmSearchResponse | undefined> {
     try {
-      const res = await axios.get(`/api/v2.1/films/${keyword}`, axiosConfig);
+      const res = await axios.get(`/api/v2.1/films/search-by-keyword?keyword=${keyword}`, axiosConfig);
       return res.data;
     } catch (error) {
       console.error("Error fetching keyword film:", error);

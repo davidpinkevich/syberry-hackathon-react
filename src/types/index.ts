@@ -1,7 +1,9 @@
 export type Film = {
-  filmId: number;
+  kinopoiskId: number;
   nameRu: string;
   nameEn: string;
+  premiereRu: string;
+  duration: number;
   type: string;
   year: string;
   description: string;
@@ -40,3 +42,9 @@ export type Genre = {
 export type Country = {
   country: string;
 };
+
+
+export type User = {
+  login: string;
+  password: string;
+}
