@@ -1,0 +1,12 @@
+@import "./normalize.scss";
+@import "./fonts.scss";
+
+body {
+  background-color: rgb(0, 0, 0);
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
