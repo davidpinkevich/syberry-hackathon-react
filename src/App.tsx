@@ -1,5 +1,9 @@
+import AboutfFilm from "./components/Film/AboutfFilm";
+
 function App() {
-  return <div></div>;
+  return <div>
+    <AboutfFilm />
+  </div>;
 }
 
 export default App;
