@@ -35,7 +35,7 @@ const Search = () => {
               <Link
                 className={styles.link_film}
                 key={film.kinopoiskId}
-                to={`/film/${film.kinopoiskId}`}
+                to={`/film/${film.filmId}`}
               >
                 {film.nameRu}
               </Link>

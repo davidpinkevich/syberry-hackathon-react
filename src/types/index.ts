@@ -4,6 +4,7 @@ export type Film = {
   nameEn: string;
   premiereRu: string;
   duration: number;
+  filmId?: number;
   type: string;
   year: string;
   description: string;
