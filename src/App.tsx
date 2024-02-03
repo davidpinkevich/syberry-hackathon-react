@@ -14,9 +14,9 @@ function App() {
             path="profile"
             element={<PrivateRoute>Private</PrivateRoute>}
           />
+          <Route path="favorites" element={<div>Favorites</div>} />
+          <Route path="film/:id" element={<FilmPage />} />
         </Route>
-        <Route path="favorites" element={<div>Favorites</div>} />
-        <Route path="film/:id" element={<FilmPage />} />
       </Routes>
     </div>
   );
