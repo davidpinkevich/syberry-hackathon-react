@@ -1,25 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import { Film } from "../../types";
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { Film } from "../../types";
 
-// const user = localStorage.getItem('user');
-const favorites= localStorage.getItem('favorites');
+const favorites = JSON.parse(localStorage.getItem('favorites')!);
 
-const initialState = {
-  favorites: favorites ? JSON.parse(favorites) : [],
+type TypeInitial = {
+  favorites: Film[];
+};
+const initialState: TypeInitial = {
+  favorites: favorites || []
   
 }
 export const sliceFavorites = createSlice({
   name: 'favorites',
   initialState,
   reducers:{
-    getFavorites: () => { 
+    addToFavorites: (state, {payload}:PayloadAction<Film>) => { 
      
-      // const isExist = state.favorites.find(item => item.id === payload.id)
-      // if(!isExist)state.favorites.push(payload)
-      // localStorage.setItem('favorites', JSON.stringify(state.favorites))
+      const isExist = state.favorites.find(item => item.kinopoiskId === payload.kinopoiskId)
+      if(!isExist)state.favorites.push(payload)
+      localStorage.setItem('favorites', JSON.stringify(state.favorites))
       
     },
-    // removeFavorites: (state, actions) => { 
+    // removeFromFavorites: (state, actions) => { 
     //   state.favorites = state.favorites.filter(user => {
     //   if(user.id !== actions.payload.id) return user
     //   })
@@ -28,5 +31,5 @@ export const sliceFavorites = createSlice({
   }
 })
 
-export const {getFavorites } =  sliceFavorites.actions
+export const {addToFavorites } =  sliceFavorites.actions
 export default sliceFavorites.reducer

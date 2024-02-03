@@ -7,6 +7,8 @@ import { removeUser } from "../../../redux/slices/userSlice";
 import { useAppDispatch, useAppSelector } from "../../../hooks/index";
 import { Link } from "react-router-dom";
 
+import userIcon from "../../../assets/icons/user-icon.svg";
+
 const Profile = () => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.userSlice);
@@ -21,9 +23,12 @@ const Profile = () => {
       {!user ? (
         <button onClick={() => setIsOpen(true)}>Войти</button>
       ) : (
-        <div className={styles.block}>
-          <Link to={"/profile"}>Личный кабинет</Link>
-          <button onClick={logout}>Выйти</button>
+        <div>
+          <img src={userIcon} width={50} alt="" />
+          <div>
+            <Link to={"/profile"}>Личный кабинет</Link>
+            <button onClick={logout}>Выйти</button>
+          </div>
         </div>
       )}
       {user && <Favorites />}
@@ -31,5 +36,3 @@ const Profile = () => {
     </div>
   );
 };
-
-export default Profile;

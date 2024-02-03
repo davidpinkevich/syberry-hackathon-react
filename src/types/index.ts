@@ -32,7 +32,7 @@ export type FilmSearchResponse = {
   keyword: string;
   pagesCount: number;
   searchFilmsCountResult: number;
-  items: Film[];
+  films: Film[];
 };
 
 export type Genre = {

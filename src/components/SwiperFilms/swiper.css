@@ -1,5 +1,12 @@
 .swiper-wrapper {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 0px 50px;
+}
+
+.swiper-button-prev, .swiper-button-next {
+  color: #fff
+}
+
+.swiper-button-prev:after, .swiper-button-next:after {
+  font-weight: bold;
 }
