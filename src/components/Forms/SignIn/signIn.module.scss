@@ -4,10 +4,10 @@
   gap: 40px;
   padding: 52px 38px;
   width: 100%;
-  max-width: 800px;
-  border-radius: 50px;
+  max-width: 700px;
+  border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.8);
-  background: rgba(88, 32, 0, 0.3);
+  background: rgb(180, 177, 180);
   backdrop-filter: blur(30px);
   overflow: hidden;
 
@@ -19,8 +19,11 @@
     font-style: normal;
     font-weight: 300;
     line-height: normal;
-    border-radius: 50px;
+    border-radius: 10px;
     cursor: pointer;
+    padding: 20px;
+    font-size: 20px;
+    color: black;
     transition: 0.3s ease-in-out;
 
     &:hover {
@@ -50,7 +53,7 @@
       width: 100%;
       padding: 5px 10px;
       border-radius: 10px;
-      font-size: 20px;
+      font-size: 30px;
       font-style: normal;
       font-weight: 300;
       line-height: normal;

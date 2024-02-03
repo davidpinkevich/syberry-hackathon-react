@@ -28,7 +28,8 @@
 }
 .infoFilm {
   position: relative;
-  background-color: rgba(245, 245, 245, 0.7);
+  // background-color: rgba(245, 245, 245, 0.7);
+  background-color: rgba(255, 255, 255, 1);
   border-radius: 14px;
   box-shadow: inset 0px 0px 6px 6px rgb(0, 0, 0);
   padding: 40px;
@@ -45,14 +46,14 @@
 .detailFilm {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  width: 450px;
+  gap: 10px;
+  width: 500px;
   .info {
     display: flex;
     justify-content: space-between;
     margin-top: 25px;
     & span {
-      font-size: 20px;
+      font-size: 26px;
       font-weight: 600;
     }
   }
