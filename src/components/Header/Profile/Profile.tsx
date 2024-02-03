@@ -7,8 +7,6 @@ import { removeUser } from "../../../redux/slices/userSlice";
 import { useAppDispatch, useAppSelector } from "../../../hooks/index";
 import { Link } from "react-router-dom";
 
-import userIcon from "../../../assets/icons/user-icon.svg";
-
 const Profile = () => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.userSlice);
