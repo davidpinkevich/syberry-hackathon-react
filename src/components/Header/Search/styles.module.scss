@@ -1,0 +1,12 @@
+.search {
+    position: relative;
+}
+
+.list {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 200px;
+    overflow: auto;
+}
