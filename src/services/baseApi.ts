@@ -63,7 +63,6 @@ class FilmsApi {
         `/api/v2.2/films/premieres?year=${year}&month=${month}`,
         axiosConfig
       );
-      console.log("res: ", res);
       return res.data;
     } catch (error) {
       console.error("Error fetching random film:", error);

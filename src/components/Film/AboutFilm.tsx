@@ -15,8 +15,7 @@ type Props = {
 const AboutFilm = ({ film }: Props) => {
   const dispatch = useAppDispatch();
   const { favorites } = useAppSelector((state) => state.sliceFavorites);
-
-  // const { genres, countries, duration, year, premiereRu } = film;
+  const { user } = useAppSelector((state) => state.userSlice);
 
   function addFavorites(props: Film) {
     dispatch(addToFavorites(props));
@@ -65,38 +64,35 @@ const AboutFilm = ({ film }: Props) => {
             {<span>Премьера:</span>} {film?.premiereRu}
           </p>
           <div style={{ display: "flex" }}>
-            {/* <AiOutlineLike
-              size={40}
-              onClick={() => {
-                if (film) addFavorites(film);
-              }}
-            />
-            <AiOutlineDislike
-              size={40}
-              onClick={() => {
-                if (film) removeFavorites(film?.kinopoiskId);
-              }}
-            /> */}
-            <AiOutlineLike
-              style={{
-                cursor: "pointer",
-              }}
-              className={` ${
-                favorites.find((item) => item.kinopoiskId === film?.kinopoiskId)
-                  ? styles.active
-                  : ""
-              } `}
-              size={40}
-              onClick={() => {
-                if (film) addFavorites(film);
-              }}
-            />
-            <AiOutlineDislike
-              size={40}
-              onClick={() => {
-                if (film) removeFavorites(film.kinopoiskId);
-              }}
-            />
+            {user && (
+              <>
+                <AiOutlineLike
+                  style={{
+                    cursor: "pointer",
+                  }}
+                  className={` ${
+                    favorites.find(
+                      (item) => item.kinopoiskId === film?.kinopoiskId
+                    )
+                      ? styles.active
+                      : ""
+                  } `}
+                  size={40}
+                  onClick={() => {
+                    if (film) addFavorites(film);
+                  }}
+                />
+                <AiOutlineDislike
+                  style={{
+                    cursor: "pointer",
+                  }}
+                  size={40}
+                  onClick={() => {
+                    if (film) removeFavorites(film.kinopoiskId);
+                  }}
+                />
+              </>
+            )}
           </div>
         </div>
       </div>
